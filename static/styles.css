@@ -1,0 +1,152 @@
+body {
+  font-family: 'Segue UI', sans-serif;
+  background-color: #f4f6f8;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 15px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+
+.course-card,
+.module-card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.module-card {
+  background: #eef2f5;
+}
+
+
+.module-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+
+.btn-link {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.btn-link:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+.btn-success {
+  background-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+
+form {
+  margin-top: 10px;
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+
+.messages {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.messages li.success {
+  background-color: #d1e7dd;
+  color: #0f5132;
+  border-left: 5px solid #28a745;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+.messages li.info {
+  background-color: #cff4fc;
+  color: #055160;
+  border-left: 5px solid #17a2b8;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+  }
+
+  .course-card,
+  .module-card {
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+
+  h1, h2, h3 {
+    font-size: 1.2rem;
+  }
+
+  .btn-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  form input[type="text"],
+  form input[type="password"],
+  form input[type="email"],
+  form textarea {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+

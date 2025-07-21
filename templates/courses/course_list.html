@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Список курсов{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2 style="margin-bottom: 30px;">Все курсы на платформе</h2>
+
+  <div style="margin-bottom: 30px;">
+    <a href="{% url 'create_course' %}" class="btn-link">Создать курс</a>
+    <a href="{% url 'my_courses' %}" class="btn-link" style="margin-left: 10px;">Мои курсы</a>
+  </div>
+
+  {% if courses %}
+    {% for course in courses %}
+      <div class="course-card">
+        <h3>{{ course.title }}</h3>
+        <p>{{ course.description|truncatewords:25 }}</p>
+        <a href="{% url 'course_detail' course.pk %}" class="btn-link" style="margin-top: 10px;">Подробнее →</a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>Курсы пока не опубликованы.</p>
+  {% endif %}
+</div>
+{% endblock %}
