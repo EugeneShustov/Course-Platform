@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Курсы{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+  <header style="background:#222; color:white; padding:15px;">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between;">
+      <h1 style="margin:0;">Обучающая платформа</h1>
+      <nav>
+        <a href="{% url 'course_list' %}" style="color:white; margin-right:15px;">Главная</a>
+        <a href="{% url 'dashboard' %}" style="color:white; margin-right:15px;">Кабинет</a>
+
+        {% if user.is_authenticated %}
+          <span>{{ user.username }}</span>
+          <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" style="background:none; border:none; color:white; margin-left:15px; cursor:pointer;">Выйти</button>
+          </form>
+        {% else %}
+          <a href="{% url 'login' %}" style="color:white; margin-right:15px;">Войти</a>
+          <a href="{% url 'register' %}" style="color:white;">Регистрация</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  {% if messages %}
+    <div class="container">
+      <ul class="messages">
+        {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <main class="container" style="padding: 40px 20px;">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer style="background:#eee; text-align:center; padding:20px;">
+    &copy; 2025 Платформа для курсов
+  </footer>
+</body>
+</html>
+
