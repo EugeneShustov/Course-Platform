@@ -149,4 +149,48 @@ form textarea {
   }
 }
 
+  input[type=radio]:checked + label {
+    background-color: #e0ffe0;
+     }
 
+.btn-import {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #f5f5f5;
+  border: 2px dashed #555;
+  border-radius: 6px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+.btn-import:hover {
+  background-color: #e6f7ff;
+  border-color: #007bff;
+  color: #007bff;
+
+.quiz-title { margin-bottom: 20px; font-size: 1.6em; }
+
+.quiz-summary, .quiz-attempt, .quiz-question {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+}
+
+.quiz-date { font-size: 0.9em; color: #666; }
+.quiz-messages { color: #d33; }
+
+.user-answer.correct   { color: green; font-weight: bold; }
+.user-answer.partial   { color: orange; font-weight: bold; }
+.user-answer.incorrect { color: red; font-weight: bold; }
+
+.correct-answer { color: #555; font-style: italic; }
+
+.quiz-question input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}

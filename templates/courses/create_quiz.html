@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Создать тест{% endblock %}
+
+{% block content %}
+  <h2>Новый тест для курса</h2>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="post" class="create-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-link btn-success">Создать тест</button>
+  </form>
+{% endblock %}

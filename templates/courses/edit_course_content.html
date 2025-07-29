@@ -1,7 +1,3 @@
-{% extends 'base.html' %}
-{% block title %}Курс: {{ course.title }}{% endblock %}
-
-{% block content %}
 <h2>Курс: {{ course.title }}</h2>
 
 <h3>Модули</h3>
@@ -14,24 +10,28 @@
 </ul>
 <a href="{% url 'add_module' course.pk %}" class="btn-link">Добавить модуль</a>
 
-<h3 style="margin-top:30px;">Тесты</h3>
+<h3>Тесты</h3>
 <ul>
   {% for quiz in course.quizzes.all %}
-    <li style="margin-bottom: 15px;">
+    <li>
       <strong>{{ quiz.title }}</strong><br>
 
       <a href="{% url 'edit_quiz' quiz.pk %}" class="btn-link">Редактировать</a>
 
-      <form method="post" action="{% url 'delete_quiz' quiz.pk %}" style="display:inline; margin-left: 10px;">
+      <a href="{% url 'import_questions' quiz.pk %}" class="btn-link">Импорт из CSV</a>
+
+      <form method="post" action="{% url 'restart_quiz_for_user' quiz.pk %}" style="display:inline;">
         {% csrf_token %}
-        <button class="btn-link btn-danger" onclick="return confirm('Удалить тест?');">Удалить</button>
+        <button class="btn-link btn-warning">Пройти заново</button>
+      </form>
+
+      <form method="post" action="{% url 'delete_quiz' quiz.pk %}" style="display:inline;">
+        {% csrf_token %}
+        <button class="btn-link btn-danger">Удалить</button>
       </form>
     </li>
-  {% empty %}
-    <li>Нет тестов</li>
   {% endfor %}
 </ul>
 
 <a href="{% url 'create_quiz' course.pk %}" class="btn-link">Добавить тест</a>
-{% endblock %}
 

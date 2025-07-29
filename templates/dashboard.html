@@ -1,26 +1,32 @@
 {% extends 'base.html' %}
 
 {% block title %}Личный кабинет{% endblock %}
+{% load course_filters %}
 
 {% block content %}
 <div class="container">
   <h1 style="margin-bottom: 30px;">Добро пожаловать, {{ user.username }}</h1>
-
   <h2 style="margin-bottom: 20px;">Ваши курсы</h2>
+
   {% if enrollments %}
-    <ul style="list-style: none; padding-left: 0;">
-      {% for enrollment in enrollments %}
+    <ul>
+    {% for enrollment in enrollments %}
+      {% with completed=enrollment.course.modules|completed_for_user:user %}
         <li class="course-card">
           <h3>{{ enrollment.course.title }}</h3>
           <p>{{ enrollment.course.description|truncatewords:25 }}</p>
+          <p>Прогресс: {{ completed|length }}/{{ enrollment.course.modules.count }}</p>
           <p><strong>Автор:</strong> {{ enrollment.course.owner.username }}</p>
-          <a href="{% url 'course_detail' enrollment.course.pk %}" class="btn-link" style="margin-top: 10px;">Перейти к курсу</a>
+          <a href="{% url 'course_detail' enrollment.course.pk %}" class="btn-link">Перейти к курсу</a>
         </li>
-      {% endfor %}
+      {% endwith %}
+    {% endfor %}
     </ul>
   {% else %}
     <p>Пока вы не записаны ни на один курс</p>
   {% endif %}
 </div>
 {% endblock %}
+
+
 
